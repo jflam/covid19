@@ -51,6 +51,8 @@ import matplotlib.pyplot as plt
 sns.set_style("whitegrid")
 
 # Cell
+import datetime
+
 def plot_seaborn(df, state, country, start_date, figure, rows, columns, index):
     if state == "":
         region = f"{country}"
@@ -58,7 +60,7 @@ def plot_seaborn(df, state, country, start_date, figure, rows, columns, index):
         region = f"{state}, {country}"
 
     figure.add_subplot(rows, columns, index)
-    p = sns.lineplot(x='Date', y='value', hue='variable',data=pd.melt(df, ['Date']))
+    p = sns.lineplot(x='Date', y='value', hue='variable', data=pd.melt(df, ['Date']))
     p.set_title(f"{region} COVID19 cases from {start_date}", loc='left', fontdict={'fontweight': 'bold'})
 
     # Remove "variable" from the legend box
@@ -69,7 +71,7 @@ def plot_seaborn(df, state, country, start_date, figure, rows, columns, index):
     # Format the x axis and y axis values
     xticks = ax.get_xticks()
     yticks = ax.get_yticks()
-    ax.set_xticklabels([df['Date'][idx].strftime('%m-%d') for idx, tm in enumerate(xticks)], rotation=45)
+    ax.set_xticklabels([datetime.datetime.fromordinal(int(tm)).strftime('%m-%d') for tm in xticks], rotation=45)
     ax.set_yticklabels([f"{val:0.0f}" for val in yticks])
 
     # Set the axis labels

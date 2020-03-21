@@ -2,18 +2,17 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"CONFIRMED_URI": "01_dashboard.ipynb",
-         "DEATHS_URI": "01_dashboard.ipynb",
-         "RECOVERED_URI": "01_dashboard.ipynb",
-         "confirmed_df": "01_dashboard.ipynb",
-         "deaths_df": "01_dashboard.ipynb",
-         "recovered_df": "01_dashboard.ipynb",
+index = {"CONFIRMED_URI": "00_core.ipynb",
+         "DEATHS_URI": "00_core.ipynb",
+         "RECOVERED_URI": "00_core.ipynb",
+         "confirmed_df": "00_core.ipynb",
+         "deaths_df": "00_core.ipynb",
+         "recovered_df": "00_core.ipynb",
          "get_data": "00_core.ipynb",
          "plot_seaborn": "00_core.ipynb",
          "generate_plots": "00_core.ipynb"}
 
-modules = ["core.py",
-           "dashboard.py"]
+modules = ["core.py"]
 
 doc_url = "https://jflam.github.io/covid19/"
 
