@@ -61,7 +61,7 @@ def plot_seaborn(df, state, country, start_date, figure, rows, columns, index):
 
     figure.add_subplot(rows, columns, index)
     p = sns.lineplot(x='Date', y='value', hue='variable', data=pd.melt(df, ['Date']))
-    p.set_title(f"{region} COVID19 cases from {start_date}", loc='left', fontdict={'fontweight': 'bold'})
+    p.set_title(f"{region} from {start_date}", loc='left', fontdict={'fontweight': 'bold'})
 
     # Remove "variable" from the legend box
     ax = plt.gca()
