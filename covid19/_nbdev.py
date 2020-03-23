@@ -10,7 +10,8 @@ index = {"CONFIRMED_URI": "00_core.ipynb",
          "recovered_df": "00_core.ipynb",
          "get_data": "00_core.ipynb",
          "plot_seaborn": "00_core.ipynb",
-         "generate_plots": "00_core.ipynb"}
+         "generate_plots": "00_core.ipynb",
+         "plot_matplotlib": "00_core.ipynb"}
 
 modules = ["core.py"]
 
