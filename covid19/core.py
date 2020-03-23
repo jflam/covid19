@@ -115,18 +115,24 @@ def plot_matplotlib(df, state, country, start_date, figure, rows, columns, index
     derivative_df = df.diff()
     derivative_df['Date'] = df['Date']
 
-    figure.add_subplot(rows, columns, index)
-    plt.bar(derivative_df[1:]['Date'], derivative_df[1:]['Confirmed Cases'], edgecolor='black', color='#eeeeee', width=0.5)
-    plt.ylabel('Daily cases')
+    ax1 = figure.add_subplot(rows, columns, index)
+    dailyConfirmedCasesColor = (0.1, 0.1, 0.1, 0.3)
+    cumulativeConfirmedCasesColor = "#1f3a93ff"
 
-    ax = plt.twinx()
-    ax.plot(df['Date'], df['Confirmed Cases'])
-    ax.set_ylabel('Cumulative Cases')
-    ax.grid(None)
+    plt.bar(derivative_df[1:]['Date'], derivative_df[1:]['Confirmed Cases'], color=dailyConfirmedCasesColor, width=0.5)
+    ax1.set_ylabel('Daily Confirmed Cases')
 
-    plt.title(f"{region} from {start_date}", loc="left", fontdict={'fontweight': 'bold'})
-    xticks = ax.get_xticks()
-    ax.set_xticklabels([datetime.datetime.fromordinal(int(tm)).strftime('%m-%d') for tm in xticks])
+    ax2 = plt.twinx()
+    ax2.plot(df['Date'], df['Confirmed Cases'], color=cumulativeConfirmedCasesColor)
+    ax2.set_ylabel('Cumulative Confirmed Cases', color=cumulativeConfirmedCasesColor)
+    ax2.spines['right'].set_color(cumulativeConfirmedCasesColor)
+    ax2.set_yticklabels([f"{tick:0.0f}" for tick in ax2.get_yticks()], color=cumulativeConfirmedCasesColor)
+    ax2.legend(['Cumulative Confirmed Cases'])
+    ax2.grid(None)
+
+    ax1.set_title(f"{region} from {start_date}", loc="left", fontdict={'fontweight': 'bold'})
+    xticks = ax1.get_xticks()
+    ax1.set_xticklabels([datetime.datetime.fromordinal(int(tm)).strftime('%m-%d') for tm in xticks])
 
 # Cell
 import math
