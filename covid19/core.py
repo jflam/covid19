@@ -30,6 +30,8 @@ def get_data(state, country, start_date):
             return df.loc[(df["Province/State"] == state) & (df["Country/Region"] == country), start_date:].T
 
     def transform_labels(df, column_name):
+        if df.empty:
+            return df
         df.index.name = 'Date'
         df.reset_index(inplace = True)
         df.columns = ['Date', column_name]
@@ -38,6 +40,9 @@ def get_data(state, country, start_date):
     df = transform_labels(filter(confirmed_df, state, country, start_date), 'Confirmed Cases')
     ddf = transform_labels(filter(deaths_df, state, country, start_date), 'Deaths')
     rdf = transform_labels(filter(recovered_df, state, country, start_date), 'Recovered')
+
+    if df.empty or ddf.empty or rdf.empty:
+        return df
 
     df['Deaths'] = ddf['Deaths']
     df['Recovered'] = rdf['Recovered']
@@ -87,11 +92,13 @@ def generate_plots(regions, columns):
     rows = math.ceil(count / columns)
     figure = plt.figure(figsize=(columns*6,rows*6))
     figure.subplots_adjust(hspace=0.5)
-    plots = []
+    n = 1
     for index, row in regions.iterrows():
         state = row['state']
         country = row['country']
         start_date = row['start_date']
         df = get_data(state, country, start_date)
-        plot_seaborn(df, state, country, start_date, figure, rows, columns, index + 1)
+        if not df.empty:
+            plot_seaborn(df, state, country, start_date, figure, rows, columns, n)
+            n += 1
     return figure
