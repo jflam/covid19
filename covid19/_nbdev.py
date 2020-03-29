@@ -5,15 +5,39 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"CONFIRMED_URI": "00_core.ipynb",
          "DEATHS_URI": "00_core.ipynb",
          "RECOVERED_URI": "00_core.ipynb",
-         "confirmed_df": "00_core.ipynb",
-         "deaths_df": "00_core.ipynb",
+         "confirmed_df": "01_data.ipynb",
+         "deaths_df": "01_data.ipynb",
          "recovered_df": "00_core.ipynb",
          "get_data": "00_core.ipynb",
          "plot_seaborn": "00_core.ipynb",
          "generate_plots": "00_core.ipynb",
-         "plot_matplotlib": "00_core.ipynb"}
+         "plot_matplotlib": "00_core.ipynb",
+         "read_daily_report": "01_data.ipynb",
+         "DAILY_REPORT_BASE_URI": "01_data.ipynb",
+         "try_parse": "01_data.ipynb",
+         "get_dates": "01_data.ipynb",
+         "find_max": "01_data.ipynb",
+         "extract_state": "01_data.ipynb",
+         "extract_county": "01_data.ipynb",
+         "state_abbreviations": "01_data.ipynb",
+         "read_historical_data": "01_data.ipynb",
+         "EARLIEST_DATE": "01_data.ipynb",
+         "init": "01_data.ipynb",
+         "CACHED_CONFIRMED": "01_data.ipynb",
+         "CACHED_DEATHS": "01_data.ipynb",
+         "get_date_column_names": "01_data.ipynb",
+         "get_countries": "01_data.ipynb",
+         "get_country_states": "01_data.ipynb",
+         "get_country_state_regions": "01_data.ipynb",
+         "get_country_names": "01_data.ipynb",
+         "get_state_names": "01_data.ipynb",
+         "get_region_names": "01_data.ipynb",
+         "plot_cumulative_and_daily": "dashboard.ipynb",
+         "dailyConfirmedCasesColor": "dashboard.ipynb",
+         "cumulativeConfirmedCasesColor": "dashboard.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "plot.py"]
 
 doc_url = "https://jflam.github.io/covid19/"
 
